@@ -37,8 +37,8 @@ class _NavpageState extends State<Navpage> {
           canvasColor: Colors.black,
           primaryColor: Colors.red,
           textTheme: Theme.of(context).textTheme.copyWith(
-            caption: TextStyle(color: Colors.yellow),
-          ),
+              // caption: TextStyle(color: Colors.yellow),
+              ),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -60,7 +60,8 @@ class _NavpageState extends State<Navpage> {
               label: 'Live rate',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_none_rounded, color: Color(0xFFBFA13A)),
+              icon: Icon(Icons.notifications_none_rounded,
+                  color: Color(0xFFBFA13A)),
               label: 'Rate alert',
             ),
             BottomNavigationBarItem(
@@ -73,4 +74,3 @@ class _NavpageState extends State<Navpage> {
     );
   }
 }
-

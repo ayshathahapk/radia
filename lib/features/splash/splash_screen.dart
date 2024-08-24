@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:radia/Core/Utils/image_constant.dart';
 import 'package:radia/main.dart';
+import '../../New/NavigationBar/navigation_bar.dart';
 import '../nav_bar.dart';
 
 class Splash extends StatefulWidget {
@@ -18,7 +20,7 @@ class _SplashState extends State<Splash> {
       Timer(Duration(seconds: 2), () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Navpage()),
+          MaterialPageRoute(builder: (context) => NavigationBarScreen()),
         );
       });
     });
@@ -30,14 +32,13 @@ class _SplashState extends State<Splash> {
       backgroundColor: Colors.black,
       body: Center(
         child: Container(
-          height: height*0.3,
-          width: width*0.3,
+          height: height * 0.3,
+          width: width * 0.3,
           child: Image.asset(
-            'asset/images/Radia logo.png',
+            ImageConstants.logo,
           ),
         ),
       ),
     );
   }
 }
-

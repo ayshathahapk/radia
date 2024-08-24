@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'Core/app_export.dart';
 import 'features/splash/splash_screen.dart';
-
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 var width;
 var height;
@@ -18,10 +21,9 @@ Future<void> main() async {
   if (!kIsWeb) {
     await localhostServer.start();
   }
-  runApp(const MyApp());
+  tz.initializeTimeZones();
+  runApp(const ProviderScope(child: MyApp()));
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,15 +33,15 @@ class MyApp extends StatelessWidget {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home:Splash(),
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: Splash(),
+      );
+    });
   }
 }
-
-
