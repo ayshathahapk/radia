@@ -22,7 +22,7 @@ class _LivePageState extends ConsumerState<LivePage> {
   late Timer _timer;
   String formattedTime = DateFormat('h:mm:ss a').format(DateTime.now());
   final formattedTimeProvider = StateProvider(
-    (ref) => DateFormat('h:mm:ss a').format(DateTime.now()),
+    (ref) => DateFormat('h:mm a').format(DateTime.now()),
   );
   final bdTimeProvider = StateProvider(
     (ref) => "",
@@ -47,7 +47,7 @@ class _LivePageState extends ConsumerState<LivePage> {
 
   void _updateTime(Timer timer) {
     ref.read(formattedTimeProvider.notifier).update(
-          (state) => DateFormat('h:mm:ss a').format(DateTime.now()),
+          (state) => DateFormat('h:mm a').format(DateTime.now()),
         );
 
     // setState(() {
