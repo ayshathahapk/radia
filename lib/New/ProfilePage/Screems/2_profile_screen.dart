@@ -101,66 +101,76 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CustomImageView(
-          imagePath: ImageConstants.logo,
-          width: 90.h,
-        ),
-        CustomImageView(
-          imagePath: ImageConstants.logoText,
-        ), // Ensure this image exists in your assets folder
-        space(),
-        Text(
-          'Customer Support',
-          style: CustomPoppinsTextStyles.bodyText3White,
-        ),
-        Text(
-          '24 / 7 Support',
-          style: CustomPoppinsTextStyles.bodyText1White,
-        ),
-        SizedBox(height: 20),
-        Expanded(
-          flex: 0,
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            mainAxisSpacing: 11,
-            crossAxisSpacing: 11,
-            children: [
-              _buildCard(
-                context,
-                FontAwesomeIcons.whatsapp,
-                'WhatsApp',
-                '+971542172259',
-                _launchWhatsApp,
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(10.h),
+        width: SizeUtils.width,
+        height: SizeUtils.height,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(ImageConstants.logoBg), fit: BoxFit.cover)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomImageView(
+              imagePath: ImageConstants.logo,
+              width: 90.h,
+            ),
+            CustomImageView(
+              imagePath: ImageConstants.logoText,
+            ), // Ensure this image exists in your assets folder
+            space(),
+            Text(
+              'Customer Support',
+              style: CustomPoppinsTextStyles.bodyText3White,
+            ),
+            Text(
+              '24 / 7 Support',
+              style: CustomPoppinsTextStyles.bodyText1White,
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              flex: 0,
+              child: GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                children: [
+                  _buildCard(
+                    context,
+                    FontAwesomeIcons.whatsapp,
+                    'WhatsApp',
+                    '+971542172259',
+                    _launchWhatsApp,
+                  ),
+                  _buildCard(
+                    context,
+                    FontAwesomeIcons.envelope,
+                    'Mail',
+                    'Drop us a line',
+                    _launchMail,
+                  ),
+                  _buildCard(
+                    context,
+                    FontAwesomeIcons.phone,
+                    'Call Us',
+                    '+971542172259',
+                    _launchContact,
+                  ),
+                  _buildCard(
+                    context,
+                    FontAwesomeIcons.mapLocationDot,
+                    'Our Adress',
+                    'React us at',
+                    _launchMap,
+                  ),
+                ],
               ),
-              _buildCard(
-                context,
-                FontAwesomeIcons.envelope,
-                'Mail',
-                'Drop us a line',
-                _launchMail,
-              ),
-              _buildCard(
-                context,
-                FontAwesomeIcons.phone,
-                'Call Us',
-                '+971542172259',
-                _launchContact,
-              ),
-              _buildCard(
-                context,
-                FontAwesomeIcons.mapLocationDot,
-                'Our Adress',
-                'React us at',
-                _launchMap,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

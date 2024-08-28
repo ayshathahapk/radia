@@ -177,14 +177,14 @@ class _NavigationBarState extends ConsumerState<NavigationBarScreen> {
             animationDuration: const Duration(milliseconds: 500),
             onTap: (index) {
               if (index == 2) {
-                _onItemTapped(index);
-                // showModalBottomSheet(
-                //   backgroundColor: appTheme.whiteA700,
-                //   context: context,
-                //   builder: (BuildContext context) {
-                //     return showBottomSheetScreen(context: context);
-                //   },
-                // );
+                // _onItemTapped(index);
+                showModalBottomSheet(
+                  backgroundColor: appTheme.whiteA700,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return showBottomSheetScreen(context: context);
+                  },
+                );
               } else {
                 _onItemTapped(index);
               }

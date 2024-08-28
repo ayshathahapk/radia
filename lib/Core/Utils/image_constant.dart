@@ -18,7 +18,7 @@ class ImageConstants {
   static const notificationLogo = "$imagePathIcon/notification.svg";
   static const bankIcon = "$imagePathIcon/15_File.svg";
   static const personIcon = "$imagePathIcon/89_Avatar.svg";
-  static const newsIcon = "$imagePathIcon/94_Newspaper.svg.svg";
+  static const newsIcon = "$imagePathIcon/94_Newspaper.svg";
   // static const instagramIcon = '$imagePathIcon/logo_instagram.png';
   // static const googleIcon = '$imagePathIcon/google_logo.png';
   // static const appleIcon = '$imagePathIcon/apple_logo.png';

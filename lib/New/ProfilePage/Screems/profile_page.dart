@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:radia/Core/CommenWidgets/custom_image_view.dart';
 import 'package:radia/Core/CommenWidgets/space.dart';
+import 'package:radia/New/BankDetails%20Screen/bank_details.dart';
+import 'package:radia/New/NewsScreen/Screen/news_screen.dart';
+import 'package:radia/New/ProfilePage/Screems/2_profile_screen.dart';
 
 import '../../../Core/app_export.dart';
 
@@ -89,52 +93,88 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
 Widget showBottomSheetScreen({required BuildContext context}) {
   return SizedBox(
-    height: SizeUtils.height * 0.25,
+    height: SizeUtils.height * 0.2,
     width: SizeUtils.width,
     child: ListView(
+      padding: EdgeInsets.all(10),
       children: <Widget>[
-        CustomImageView(
-          imagePath: ImageConstants.personIcon,
+        Row(
+          children: [
+            CustomImageView(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileScreen2(),
+                    ));
+              },
+              imagePath: ImageConstants.personIcon,
+              width: 35.v,
+              color: appTheme.gray800,
+            ),
+            Text(
+              "  Profile",
+              style: GoogleFonts.poppins(
+                  // fontFamily: marine,
+                  color: appTheme.gray800,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 25.fSize),
+            )
+          ],
         ),
-        CustomImageView(
-          imagePath: ImageConstants.newsIcon,
+        space(),
+        Row(
+          children: [
+            CustomImageView(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NewsScreen(),
+                    ));
+              },
+              imagePath: ImageConstants.newsIcon,
+              width: 35.v,
+              color: appTheme.gray800,
+            ),
+            Text(
+              "  News",
+              style: GoogleFonts.poppins(
+                  // fontFamily: marine,
+                  color: appTheme.gray800,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 25.fSize),
+            )
+          ],
         ),
-        CustomImageView(
-          imagePath: ImageConstants.bankIcon,
-        ),
-        ListTile(
-          leading: Icon(Icons.person_pin), // Icon for 'Bank Details'
-          title: Text('Profile'),
+        space(),
+        GestureDetector(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Profile(),
-                ));
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                return Details();
+              },
+            ));
           },
+          child: Row(
+            children: [
+              CustomImageView(
+                imagePath: ImageConstants.bankIcon,
+                width: 35.v,
+                color: appTheme.gray800,
+              ),
+              Text(
+                "  Bank Details",
+                style: GoogleFonts.poppins(
+                    // fontFamily: marine,
+                    color: appTheme.gray800,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 25.fSize),
+              )
+            ],
+          ),
         ),
-        ListTile(
-          leading: Icon(Icons.newspaper_outlined), // Icon for 'Bank Details'
-          title: Text('News'),
-          onTap: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //       builder: (context) => News(),
-            //     ));
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.comment_bank), // Icon for 'Bank Details'
-          title: Text('Bank Details'),
-          onTap: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //       builder: (context) => Bankdetails(),
-            //     ));
-          },
-        ),
+        space(),
       ],
     ),
   );

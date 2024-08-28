@@ -18,6 +18,11 @@ class CustomPoppinsTextStyles {
       color: appTheme.whiteA700,
       fontWeight: FontWeight.w400,
       fontSize: 18.fSize);
+  static final TextStyle bodyTextBlack = GoogleFonts.poppins(
+      // fontFamily: marine,
+      color: appTheme.black900,
+      fontWeight: FontWeight.w400,
+      fontSize: 18.fSize);
 
   static final TextStyle bodyTextSemiBold = GoogleFonts.poppins(
       // fontFamily: marine,

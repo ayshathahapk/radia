@@ -100,9 +100,9 @@ class _LivePageState extends ConsumerState<LivePage> {
     ref.read(uaeTimeProvider.notifier).update(
           (state) => uaeTimeString,
         );
-    print('UK Time: $ukTimeString');
-    print('Bangladesh Time: $bdTimeString');
-    print('Ind Time: $inTimeString');
+    // print('UK Time: $ukTimeString');
+    // print('Bangladesh Time: $bdTimeString');
+    // print('Ind Time: $inTimeString');
   }
 
   @override
