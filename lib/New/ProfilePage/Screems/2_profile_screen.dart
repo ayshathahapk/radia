@@ -69,7 +69,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchWhatsApp() async {
     final Uri url = Uri.parse(
-        'https://wa.me/+971542172259'); // Replace with your WhatsApp link
+        'https://wa.me/+971542471894'); // Replace with your WhatsApp link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -77,7 +77,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchMail() async {
     final Uri url = Uri.parse(
-        'mailto:pulparambilgold@gmail.com'); // Replace with your mail link
+        'mailto:radiamohammedjewelleryllc@gmail.com'); // Replace with your mail link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -85,7 +85,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchContact() async {
     final Uri url =
-        Uri.parse('tel:+971542172259'); // Replace with your contact number
+        Uri.parse('tel:+971542471894'); // Replace with your contact number
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }

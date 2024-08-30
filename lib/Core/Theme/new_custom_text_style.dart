@@ -17,7 +17,7 @@ class CustomPoppinsTextStyles {
       // fontFamily: marine,
       color: appTheme.whiteA700,
       fontWeight: FontWeight.w400,
-      fontSize: 18.fSize);
+      fontSize: 16.fSize);
   static final TextStyle bodyTextBlack = GoogleFonts.poppins(
       // fontFamily: marine,
       color: appTheme.black900,
@@ -27,6 +27,11 @@ class CustomPoppinsTextStyles {
   static final TextStyle bodyTextSemiBold = GoogleFonts.poppins(
       // fontFamily: marine,
       color: appTheme.whiteA700,
+      fontWeight: FontWeight.w500,
+      fontSize: 18.fSize);
+  static final TextStyle bodyTextSemiBoldWhite = GoogleFonts.poppins(
+      // fontFamily: marine,
+      color: appTheme.black900,
       fontWeight: FontWeight.w500,
       fontSize: 18.fSize);
 
@@ -45,6 +50,11 @@ class CustomPoppinsTextStyles {
       color: appTheme.black900,
       fontWeight: FontWeight.w500,
       fontSize: 20.fSize);
+  static final TextStyle bodyText4 = GoogleFonts.poppins(
+      // fontFamily: marine,
+      color: appTheme.black900,
+      fontWeight: FontWeight.w600,
+      fontSize: 18.fSize);
 
   static final TextStyle bodyText1White = GoogleFonts.poppins(
       // fontFamily: marine,

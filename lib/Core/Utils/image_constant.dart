@@ -13,6 +13,7 @@ class ImageConstants {
 
   /// Icons
   static const noNetwork = '$imagePathIcon/noNetwork.json';
+  static const whatsapp = '$imagePathIcon/101_Whatsapp.svg';
   static const userLogo = "$imagePathIcon/user_logo.svg";
   static const chartLogo = "$imagePathIcon/chart.svg";
   static const notificationLogo = "$imagePathIcon/notification.svg";

@@ -98,54 +98,58 @@ Widget showBottomSheetScreen({required BuildContext context}) {
     child: ListView(
       padding: EdgeInsets.all(10),
       children: <Widget>[
-        Row(
-          children: [
-            CustomImageView(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProfileScreen2(),
-                    ));
-              },
-              imagePath: ImageConstants.personIcon,
-              width: 35.v,
-              color: appTheme.gray800,
-            ),
-            Text(
-              "  Profile",
-              style: GoogleFonts.poppins(
-                  // fontFamily: marine,
-                  color: appTheme.gray800,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 25.fSize),
-            )
-          ],
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileScreen2(),
+                ));
+          },
+          child: Row(
+            children: [
+              CustomImageView(
+                imagePath: ImageConstants.personIcon,
+                width: 30.v,
+                color: appTheme.gray800,
+              ),
+              Text(
+                "  Profile",
+                style: GoogleFonts.poppins(
+                    // fontFamily: marine,
+                    color: appTheme.gray800,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20.fSize),
+              )
+            ],
+          ),
         ),
         space(),
-        Row(
-          children: [
-            CustomImageView(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => NewsScreen(),
-                    ));
-              },
-              imagePath: ImageConstants.newsIcon,
-              width: 35.v,
-              color: appTheme.gray800,
-            ),
-            Text(
-              "  News",
-              style: GoogleFonts.poppins(
-                  // fontFamily: marine,
-                  color: appTheme.gray800,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 25.fSize),
-            )
-          ],
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewsScreen(),
+                ));
+          },
+          child: Row(
+            children: [
+              CustomImageView(
+                imagePath: ImageConstants.newsIcon,
+                width: 30.v,
+                color: appTheme.gray800,
+              ),
+              Text(
+                "  News",
+                style: GoogleFonts.poppins(
+                    // fontFamily: marine,
+                    color: appTheme.gray800,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20.fSize),
+              )
+            ],
+          ),
         ),
         space(),
         GestureDetector(
@@ -160,7 +164,7 @@ Widget showBottomSheetScreen({required BuildContext context}) {
             children: [
               CustomImageView(
                 imagePath: ImageConstants.bankIcon,
-                width: 35.v,
+                width: 30.v,
                 color: appTheme.gray800,
               ),
               Text(
@@ -169,7 +173,7 @@ Widget showBottomSheetScreen({required BuildContext context}) {
                     // fontFamily: marine,
                     color: appTheme.gray800,
                     fontWeight: FontWeight.w400,
-                    fontSize: 25.fSize),
+                    fontSize: 20.fSize),
               )
             ],
           ),
