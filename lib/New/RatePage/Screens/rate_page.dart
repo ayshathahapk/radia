@@ -30,7 +30,7 @@ class _RatePageState extends ConsumerState<RatePage> {
   int _counter = 0;
   int count = 0;
   final countProvider = StateProvider<double>(
-    (ref) => 500,
+    (ref) => 0,
   );
   void _incrementCounter() {
     setState(() {

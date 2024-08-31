@@ -397,30 +397,6 @@ class _LivePageState extends ConsumerState<LivePage> {
                     );
                   },
                 );
-                if (liveRateData.gold.bid > godBid) {
-                  // print("live rate changing${liveRateData.gold.bid}");
-                  WidgetsBinding.instance.addPostFrameCallback(
-                    (timeStamp) {
-                      ref1.read(goldBidProvider.notifier).update(
-                            (state) => liveRateData.gold.bid,
-                          );
-                    },
-                  );
-                  color = appTheme.mainGreen;
-                } else if (liveRateData.gold.bid == godBid) {
-                  color = appTheme.mainWhite;
-                } else {
-                  color = appTheme.red700;
-
-                  // print("live rate not changing${liveRateData.gold.bid}");
-                  // WidgetsBinding.instance.addPostFrameCallback(
-                  //   (timeStamp) {
-                  //     ref1.read(goldBidProvider.notifier).update(
-                  //           (state) => liveRateData.gold.bid,
-                  //         );
-                  //   },
-                  // );
-                }
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
