@@ -101,10 +101,17 @@ class _RatePageState extends ConsumerState<RatePage> {
                               final liveRateData = ref1.watch(liveRateProvider);
                               ref1.watch(rateBidValue);
                               final res = ref1.watch(rateBidValue);
-                              return Text(
-                                "\$${liveRateData!.gold.bid + (spreadNow?.editedBidSpreadValue ?? 0)}",
-                                style: CustomPoppinsTextStyles.bodyText,
-                              );
+                              if (liveRateData != null) {
+                                return Text(
+                                  "\$${liveRateData.gold?.bid ?? 0 + (spreadNow?.editedBidSpreadValue ?? 0)}",
+                                  style: CustomPoppinsTextStyles.bodyText,
+                                );
+                              } else {
+                                return Text(
+                                  "\$0",
+                                  style: CustomPoppinsTextStyles.bodyText,
+                                );
+                              }
                             },
                           ),
                         ],

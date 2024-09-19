@@ -5,8 +5,15 @@ class FirebaseConstants {
   static const alert = "alert";
   static const spread = "spread";
   static const spreadDocument = "spreadDocument";
-  static const bookings = "bookings";
+  // static const bookings = "bookings";
   static const user = "users";
+  static const baseUrl = "https://api.aurify.ae/user/";
+  static const adminId = "66e1292382676ef03e517773";
   // static const test = "V9e4v0UtSzUrPVgxtJzOTkq71do2";
-  static const test = "BrrFdNV51fNXmin6Kkb3dLalQbd2";
+  static const secretKey = "IfiuH/ko+rh/gekRvY4Va0s+aGYuGJEAOkbJbChhcqo=";
+  // static const test = "BrrFdNV51fNXmin6Kkb3dLalQbd2";
+  static const headers = {
+    'X-Secret-Key': secretKey,
+    'Content-Type': 'application/json',
+  };
 }

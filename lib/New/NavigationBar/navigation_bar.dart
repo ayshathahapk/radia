@@ -21,6 +21,7 @@ import '../../Core/CommenWidgets/noNetworkScreen.dart';
 import '../../Core/Utils/notification service.dart';
 import '../../Core/app_export.dart';
 import '../LivePage/Screens/live_page.dart';
+import '../LivePage/Screens/live_page_initialising.dart';
 import '../ProfilePage/Screems/2_profile_screen.dart';
 
 final diviceID = StateProvider(
@@ -40,7 +41,8 @@ class NavigationBarScreen extends ConsumerStatefulWidget {
 
 class _NavigationBarState extends ConsumerState<NavigationBarScreen> {
   List<Widget> pages = [
-    LivePage(),
+    // LivePage(),
+    LiveRatesWidget(),
     RatePage(),
     // RatePage(),
     // ProfileScreen2(),

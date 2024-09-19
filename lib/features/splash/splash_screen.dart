@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:radia/Core/Utils/image_constant.dart';
 import 'package:radia/main.dart';
+import '../../New/LivePage/Repository/live_repository.dart';
 import '../../New/NavigationBar/navigation_bar.dart';
 import '../nav_bar.dart';
 
@@ -57,6 +58,7 @@ class _SplashState extends ConsumerState<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    // ref.watch(liveRateProvider.notifier).refreshData();
     return Scaffold(
       backgroundColor: Colors.black,
       body: Center(

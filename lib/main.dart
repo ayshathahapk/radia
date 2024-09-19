@@ -7,6 +7,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'Core/Utils/notification service.dart';
 import 'Core/app_export.dart';
+import 'New/LivePage/Repository/live_repository.dart';
 import 'features/splash/splash_screen.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -24,19 +25,19 @@ const AndroidNotificationChannel channel = AndroidNotificationChannel(
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
-final localhostServer = InAppLocalhostServer(documentRoot: 'assets');
+// final localhostServer = InAppLocalhostServer(documentRoot: 'assets');
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
-    await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
-  }
+  // if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+  //   await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
+  // }
 
-  if (!kIsWeb) {
-    await localhostServer.start();
-  }
+  // if (!kIsWeb) {
+  //   await localhostServer.start();
+  // }
   tz.initializeTimeZones();
   FirebaseMessaging.instance.requestPermission();
   await NotificationService.init();
@@ -47,14 +48,24 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerStatefulWidget {
   const MyApp({super.key});
+
+  @override
+  ConsumerState<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends ConsumerState<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-
+    ref.watch(liveRateProvider);
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
