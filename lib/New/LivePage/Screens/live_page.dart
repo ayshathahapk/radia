@@ -105,6 +105,9 @@ class _LivePageState extends ConsumerState<LivePage> {
     return tzDateTime;
   }
 
+  final bannerBool = StateProvider.autoDispose(
+    (ref) => false,
+  );
   final goldAskPrice = StateProvider.autoDispose<double>(
     (ref) => 0,
   );
@@ -272,14 +275,19 @@ class _LivePageState extends ConsumerState<LivePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Visibility(
-            visible: false,
-            child: RunningTextBanner(
-              text:
-                  'This is your running text. You can make it as long as you want, and it will keep scrolling.',
-              textStyle: CustomPoppinsTextStyles.titleSmallWhiteA700SemiBold_1,
-              speed: Duration(seconds: 15),
-            ),
+          Consumer(
+            builder: (context, refBanner, child) {
+              return Visibility(
+                visible: refBanner.watch(bannerBool),
+                child: RunningTextBanner(
+                  text:
+                      'This is your running text. You can make it as long as you want, and it will keep scrolling.',
+                  textStyle:
+                      CustomPoppinsTextStyles.titleSmallWhiteA700SemiBold_1,
+                  speed: const Duration(seconds: 15),
+                ),
+              );
+            },
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -389,6 +397,14 @@ class _LivePageState extends ConsumerState<LivePage> {
                       final spreadNow = spotRate.info;
                       WidgetsBinding.instance.addPostFrameCallback(
                         (timeStamp) {
+                          ref1.read(bannerBool.notifier).update(
+                            (state) {
+                              return liveRateData.gold!.marketStatus !=
+                                      "TRADEABLE"
+                                  ? true
+                                  : false;
+                            },
+                          );
                           ref1.read(rateBidValue.notifier).update(
                             (state) {
                               return liveRateData.gold!.bid +
@@ -918,34 +934,44 @@ class _LivePageState extends ConsumerState<LivePage> {
                                   ),
                                   child: Row(
                                     children: [
-                                      Spacer(),
-                                      RichText(
-                                          text: TextSpan(children: [
-                                        TextSpan(
-                                            text:
-                                                commodities.metal.toUpperCase(),
-                                            style: CustomPoppinsTextStyles
-                                                .bodyText1),
-                                        TextSpan(
-                                            text: commodities.purity.toString(),
-                                            style: GoogleFonts.poppins(
-                                                // fontFamily: marine,
-                                                color: appTheme.black900,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15.fSize))
-                                      ])),
+                                      SizedBox(
+                                        width: 120.h,
+                                        child: Center(
+                                          child: RichText(
+                                              text: TextSpan(children: [
+                                            TextSpan(
+                                                text: commodities.metal
+                                                    .toUpperCase(),
+                                                style: CustomPoppinsTextStyles
+                                                    .bodyText1),
+                                            TextSpan(
+                                                text: commodities.purity
+                                                    .toString(),
+                                                style: GoogleFonts.poppins(
+                                                    // fontFamily: marine,
+                                                    color: appTheme.black900,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 15.fSize))
+                                          ])),
+                                        ),
+                                      ),
                                       // Text(
                                       //   commodities.metal + commodities.purity,
                                       //   style: CustomPoppinsTextStyles.bodyText1,
                                       // ),
-                                      Spacer(),
-                                      Text(
-                                        commodities.unit.toString() +
-                                            commodities.weight,
-                                        style:
-                                            CustomPoppinsTextStyles.bodyText1,
+
+                                      SizedBox(
+                                        width: 125.h,
+                                        child: Center(
+                                          child: Text(
+                                            commodities.unit.toString() +
+                                                commodities.weight,
+                                            style: CustomPoppinsTextStyles
+                                                .bodyText1,
+                                          ),
+                                        ),
                                       ),
-                                      Spacer(),
+
                                       // VerticalDivider(
                                       //   color: appTheme.gray700,
                                       // ),
@@ -973,14 +999,18 @@ class _LivePageState extends ConsumerState<LivePage> {
                                                       commodities.purity
                                                           .toString()
                                                           .length));
-                                          return Text(
-                                            rateNow.toStringAsFixed(2),
-                                            style: CustomPoppinsTextStyles
-                                                .bodyText1,
+                                          return SizedBox(
+                                            width: 120.h,
+                                            child: Center(
+                                              child: Text(
+                                                rateNow.toStringAsFixed(2),
+                                                style: CustomPoppinsTextStyles
+                                                    .bodyText1,
+                                              ),
+                                            ),
                                           );
                                         },
                                       ),
-                                      Spacer(),
                                     ],
                                   ),
                                 ),
@@ -999,33 +1029,41 @@ class _LivePageState extends ConsumerState<LivePage> {
                                   ),
                                   child: Row(
                                     children: [
-                                      Spacer(),
-                                      RichText(
-                                          text: TextSpan(children: [
-                                        TextSpan(
-                                            text: "TEN TOLA",
-                                            style: CustomPoppinsTextStyles
-                                                .bodyText1),
-                                        // TextSpan(
-                                        //     text: commodities.purity,
-                                        //     style: GoogleFonts.poppins(
-                                        //       // fontFamily: marine,
-                                        //         color: appTheme.black900,
-                                        //         fontWeight: FontWeight.w500,
-                                        //         fontSize: 10.fSize))
-                                      ])),
+                                      SizedBox(
+                                        width: 120.h,
+                                        child: Center(
+                                          child: RichText(
+                                              text: TextSpan(children: [
+                                            TextSpan(
+                                                text: "TEN TOLA",
+                                                style: CustomPoppinsTextStyles
+                                                    .bodyText1),
+                                            // TextSpan(
+                                            //     text: commodities.purity,
+                                            //     style: GoogleFonts.poppins(
+                                            //       // fontFamily: marine,
+                                            //         color: appTheme.black900,
+                                            //         fontWeight: FontWeight.w500,
+                                            //         fontSize: 10.fSize))
+                                          ])),
+                                        ),
+                                      ),
                                       // Text(
                                       //   commodities.metal + commodities.purity,
                                       //   style: CustomPoppinsTextStyles.bodyText1,
                                       // ),
-                                      Spacer(),
-                                      Text(
-                                        commodities.unit.toString() +
-                                            commodities.weight,
-                                        style:
-                                            CustomPoppinsTextStyles.bodyText1,
+
+                                      SizedBox(
+                                        width: 125.h,
+                                        child: Center(
+                                          child: Text(
+                                            commodities.unit.toString() +
+                                                commodities.weight,
+                                            style: CustomPoppinsTextStyles
+                                                .bodyText1,
+                                          ),
+                                        ),
                                       ),
-                                      Spacer(),
                                       // VerticalDivider(
                                       //   color: appTheme.gray700,
                                       // ),
@@ -1053,14 +1091,18 @@ class _LivePageState extends ConsumerState<LivePage> {
                                                       commodities.purity
                                                           .toString()
                                                           .length));
-                                          return Text(
-                                            rateNow.toStringAsFixed(0),
-                                            style: CustomPoppinsTextStyles
-                                                .bodyText1,
+                                          return SizedBox(
+                                            width: 120.h,
+                                            child: Center(
+                                              child: Text(
+                                                rateNow.toStringAsFixed(0),
+                                                style: CustomPoppinsTextStyles
+                                                    .bodyText1,
+                                              ),
+                                            ),
                                           );
                                         },
                                       ),
-                                      Spacer(),
                                     ],
                                   ),
                                 ),
@@ -1079,33 +1121,40 @@ class _LivePageState extends ConsumerState<LivePage> {
                                   ),
                                   child: Row(
                                     children: [
-                                      Spacer(),
-                                      RichText(
-                                          text: TextSpan(children: [
-                                        TextSpan(
-                                            text: "KILOBAR",
-                                            style: CustomPoppinsTextStyles
-                                                .bodyText1),
-                                        // TextSpan(
-                                        //     text: commodities.purity,
-                                        //     style: GoogleFonts.poppins(
-                                        //       // fontFamily: marine,
-                                        //         color: appTheme.black900,
-                                        //         fontWeight: FontWeight.w500,
-                                        //         fontSize: 10.fSize))
-                                      ])),
+                                      SizedBox(
+                                        width: 120.h,
+                                        child: Center(
+                                          child: RichText(
+                                              text: TextSpan(children: [
+                                            TextSpan(
+                                                text: "KILOBAR",
+                                                style: CustomPoppinsTextStyles
+                                                    .bodyText1),
+                                            // TextSpan(
+                                            //     text: commodities.purity,
+                                            //     style: GoogleFonts.poppins(
+                                            //       // fontFamily: marine,
+                                            //         color: appTheme.black900,
+                                            //         fontWeight: FontWeight.w500,
+                                            //         fontSize: 10.fSize))
+                                          ])),
+                                        ),
+                                      ),
                                       // Text(
                                       //   commodities.metal + commodities.purity,
                                       //   style: CustomPoppinsTextStyles.bodyText1,
                                       // ),
-                                      Spacer(),
-                                      Text(
-                                        commodities.unit.toString() +
-                                            commodities.weight,
-                                        style:
-                                            CustomPoppinsTextStyles.bodyText1,
+                                      SizedBox(
+                                        width: 125.h,
+                                        child: Center(
+                                          child: Text(
+                                            commodities.unit.toString() +
+                                                commodities.weight,
+                                            style: CustomPoppinsTextStyles
+                                                .bodyText1,
+                                          ),
+                                        ),
                                       ),
-                                      Spacer(),
                                       // VerticalDivider(
                                       //   color: appTheme.gray700,
                                       // ),
@@ -1133,14 +1182,18 @@ class _LivePageState extends ConsumerState<LivePage> {
                                                       commodities.purity
                                                           .toString()
                                                           .length));
-                                          return Text(
-                                            rateNow.toStringAsFixed(0),
-                                            style: CustomPoppinsTextStyles
-                                                .bodyText1,
+                                          return SizedBox(
+                                            width: 120.h,
+                                            child: Center(
+                                              child: Text(
+                                                rateNow.toStringAsFixed(0),
+                                                style: CustomPoppinsTextStyles
+                                                    .bodyText1,
+                                              ),
+                                            ),
                                           );
                                         },
                                       ),
-                                      Spacer(),
                                     ],
                                   ),
                                 ),
