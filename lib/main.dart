@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'Core/Utils/notification service.dart';
 import 'Core/app_export.dart';
 import 'New/LivePage/Repository/live_repository.dart';
+import 'New/NavigationBar/navigation_bar.dart';
 import 'features/splash/splash_screen.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -73,7 +74,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Splash(),
+        home: const NavigationBarScreen(),
       );
     });
   }

@@ -266,10 +266,22 @@ class _LivePageState extends ConsumerState<LivePage> {
   //       return 1;
   //   }
   // }
+  String getMarketStatus() {
+    DateTime now = DateTime.now();
+    int currentDay = now.weekday;
+
+    if (currentDay >= DateTime.friday && currentDay <= DateTime.sunday) {
+      DateTime nextMonday = now.add(Duration(days: (8 - currentDay) % 7));
+      String formattedDate = DateFormat('MMMM d, yyyy').format(nextMonday);
+
+      return ' Market is closed. It will open on Monday, $formattedDate. ';
+    } else {
+      return ' Market is closed. It will open on Monday, ';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final liveRateData = ref.watch(liveRateProvider);
     return Padding(
       padding: EdgeInsets.only(left: 8.0.v, right: 8.0.v),
       child: Column(
@@ -279,13 +291,25 @@ class _LivePageState extends ConsumerState<LivePage> {
             builder: (context, refBanner, child) {
               return Visibility(
                 visible: refBanner.watch(bannerBool),
-                child: RunningTextBanner(
-                  text:
-                      'This is your running text. You can make it as long as you want, and it will keep scrolling.',
-                  textStyle:
-                      CustomPoppinsTextStyles.titleSmallWhiteA700SemiBold_1,
-                  speed: const Duration(seconds: 15),
+
+                child: Container(
+                  height: 50,
+                  color: Colors.red,
+                  child: Center(
+                    child: AutoScrollText(
+                      delayBefore: const Duration(seconds: 3),
+                      getMarketStatus(),
+                      style: CustomPoppinsTextStyles.buttonText,
+                    ),
+                  ),
                 ),
+                // visible: refBanner.watch(bannerBool),
+                // child: RunningTextBanner(
+                //   text: getMarketStatus(),
+                //   textStyle:
+                //       CustomPoppinsTextStyles.titleSmallWhiteA700SemiBold_1,
+                //   speed: const Duration(seconds: 15),
+                // ),
               );
             },
           ),
@@ -393,6 +417,7 @@ class _LivePageState extends ConsumerState<LivePage> {
               return ref1.watch(spotRateProvider).when(
                 data: (spotRate) {
                   if (spotRate != null) {
+                    final liveRateData = ref1.watch(liveRateProvider);
                     if (liveRateData != null) {
                       final spreadNow = spotRate.info;
                       WidgetsBinding.instance.addPostFrameCallback(
