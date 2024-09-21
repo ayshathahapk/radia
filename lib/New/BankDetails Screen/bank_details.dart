@@ -95,7 +95,6 @@ class _DetailsState extends ConsumerState<Details> {
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   )),
-              space(h: 30.v),
               Consumer(
                 builder: (context, refBank, child) {
                   return refBank.watch(bankDetailsProvider).when(
@@ -104,21 +103,25 @@ class _DetailsState extends ConsumerState<Details> {
                             print("data Null alla");
                             print(data.commodities.bankDetails);
                             if (data.commodities.bankDetails.isNotEmpty) {
-                              return SizedBox(
-                                height: SizeUtils.height * 0.65,
-                                width: SizeUtils.width * 0.93,
+                              return Expanded(
+                                flex: 0,
                                 child: ListView.builder(
-                                  itemCount: 1,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount:
+                                      data.commodities.bankDetails.length,
                                   itemBuilder: (context, index) {
-                                    // _acName.text = bank?.AccountNumber ?? "";
-                                    // _holderName.text = bank?.holderName ?? "";
-                                    // _iban.text = bank?.IBANCode ?? "";
-                                    // _ifsc.text = bank?.IFSCcode ?? "";
-                                    // _swift.text = bank?.SWIFTcode ?? "";
-                                    // _bankName.text = bank?.bankName ?? "";
-                                    // _branch.text = bank?.branch ?? "";
-                                    // _city.text = bank?.city ?? "";
-                                    // _country.text = bank?.country ?? "";
+                                    final bank =
+                                        data.commodities.bankDetails[index];
+                                    _acName.text = "";
+                                    _holderName.text = bank.holderName ?? "";
+                                    _iban.text = bank.iban ?? "";
+                                    _ifsc.text = bank.ifsc ?? "";
+                                    _swift.text = bank.swift ?? "";
+                                    _bankName.text = bank.bankName ?? "";
+                                    _branch.text = bank.branch ?? "";
+                                    _city.text = bank.city ?? "";
+                                    _country.text = bank.country ?? "";
 
                                     return Padding(
                                       padding: const EdgeInsets.only(
@@ -280,7 +283,7 @@ class _DetailsState extends ConsumerState<Details> {
                         ),
                       );
                 },
-              ),
+              )
               // Container(
               //   height: SizeUtils.height * 0.50,
               //   width: SizeUtils.width * 0.93,

@@ -97,21 +97,40 @@ class _RatePageState extends ConsumerState<RatePage> {
                         children: [
                           Consumer(
                             builder: (context, ref1, child) {
-                              final spreadNow = ref1.watch(spreadDataProvider2);
                               final liveRateData = ref1.watch(liveRateProvider);
-                              ref1.watch(rateBidValue);
-                              final res = ref1.watch(rateBidValue);
-                              if (liveRateData != null) {
-                                return Text(
-                                  "\$${liveRateData.gold?.bid ?? 0 + (spreadNow?.editedBidSpreadValue ?? 0)}",
-                                  style: CustomPoppinsTextStyles.bodyText,
-                                );
-                              } else {
-                                return Text(
-                                  "\$0",
-                                  style: CustomPoppinsTextStyles.bodyText,
-                                );
-                              }
+                              return ref1.watch(spotRateProvider).when(
+                                data: (data) {
+                                  final spreadNow = data!.info;
+                                  return Text(
+                                    "${liveRateData?.gold?.bid ?? 0 + (spreadNow.goldAskSpread)}",
+                                    style:
+                                        CustomPoppinsTextStyles.bodyText1White,
+                                  );
+                                },
+                                error: (error, stackTrace) {
+                                  return Text(
+                                    "0",
+                                    style:
+                                        CustomPoppinsTextStyles.bodyText1White,
+                                  );
+                                },
+                                loading: () {
+                                  return Text(
+                                    "0",
+                                    style:
+                                        CustomPoppinsTextStyles.bodyText1White,
+                                  );
+                                },
+                              );
+                              // final spreadNow = ref1.watch(spreadDataProvider2);
+                              // final liveRateData = ref1.watch(liveRateProvider);
+                              // ref1.watch(rateBidValue);
+                              // final res = ref1.watch(spreadDataProvider2);
+                              // return Text(
+                              //   res.toString(),
+                              //   // "\$${(liveRateData?.gold.bid ?? 0 + (spreadNow?.editedBidSpreadValue ?? 0)).toStringAsFixed(2)}",
+                              //   style: CustomPoppinsTextStyles.bodyText1White,
+                              // );
                             },
                           ),
                         ],
