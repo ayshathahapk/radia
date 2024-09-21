@@ -1,33 +1,75 @@
+import 'dart:async';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'Screens/bottomsheetpage_radia.dart';
 import 'Screens/live_alert.dart';
 import 'Screens/profile.dart';
 import 'Screens/ratealert.dart';
 
-class Navpage extends StatefulWidget {
+class Navpage extends ConsumerStatefulWidget {
   const Navpage({Key? key});
 
   @override
-  State<Navpage> createState() => _NavpageState();
+  ConsumerState<Navpage> createState() => _NavpageState();
 }
 
 int _currentIndex = 0;
 
-List<Widget> _pages = [
-  Liverate(),
-  Ratealert(),
-  Profile(),
-];
 
-class _NavpageState extends State<Navpage> {
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    if (await canLaunch('tel:$phoneNumber')) {
-      await launch('tel:$phoneNumber');
-    } else {
-      throw 'Could not launch $phoneNumber';
-    }
+
+class _NavpageState extends ConsumerState<Navpage> {
+
+  List<Widget> _pages = [
+    Liverate(),
+    Ratealert(),
+    Profile(),
+  ];
+
+  final isConnectedToInternet = StateProvider<bool>((ref) => false);
+  final _selectedIndex = StateProvider(
+        (ref) => 0,
+  );
+  StreamSubscription? _internetConnectionStreamSubscription;
+
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+  void _onItemTapped(int index) {
+    ref.read(_selectedIndex.notifier).update(
+          (state) => index,
+    );
   }
 
+  void internetChecking() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _internetConnectionStreamSubscription =
+          InternetConnection().onStatusChange.listen((event) {
+            switch (event) {
+              case InternetStatus.connected:
+                ref.read(isConnectedToInternet.notifier).update((state) => true);
+                break;
+              case InternetStatus.disconnected:
+                ref.read(isConnectedToInternet.notifier).update((state) => false);
+                break;
+              default:
+                ref.read(isConnectedToInternet.notifier).update((state) => true);
+                break;
+            }
+          });
+    });
+  }
+
+  @override
+  void initState() {
+    internetChecking();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _internetConnectionStreamSubscription?.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +79,8 @@ class _NavpageState extends State<Navpage> {
           canvasColor: Colors.black,
           primaryColor: Colors.red,
           textTheme: Theme.of(context).textTheme.copyWith(
-              // caption: TextStyle(color: Colors.yellow),
-              ),
+            bodySmall: TextStyle(color: Colors.yellow),
+          ),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -65,12 +107,23 @@ class _NavpageState extends State<Navpage> {
               label: 'Rate alert',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: Color(0xFFBFA13A)),
-              label: 'Profile',
+              icon: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return ShowRadiaextrapage();
+                      },
+                    );
+                  },
+                  child: Icon(Icons.more, color: Color(0xFFBFA13A))),
+              label: 'More',
             ),
+
           ],
         ),
       ),
     );
   }
 }
+

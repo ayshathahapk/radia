@@ -7,6 +7,7 @@ class FirebaseConstants {
   static const spreadDocument = "spreadDocument";
   // static const bookings = "bookings";
   static const user = "users";
+  static const bank = "bank";
   static const baseUrl = "https://api.aurify.ae/user/";
   static const adminId = "66e1292382676ef03e517773";
   // static const test = "V9e4v0UtSzUrPVgxtJzOTkq71do2";

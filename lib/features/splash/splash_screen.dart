@@ -73,3 +73,4 @@ class _SplashState extends ConsumerState<Splash> {
     );
   }
 }
+
