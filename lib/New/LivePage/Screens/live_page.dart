@@ -210,6 +210,7 @@ class _LivePageState extends ConsumerState<LivePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -985,10 +986,11 @@ class _LivePageState extends ConsumerState<LivePage> {
                               style: CustomPoppinsTextStyles.bodyText,
                             );
                           } else {
-                            return Text(
-                              "NO News",
-                              style: CustomPoppinsTextStyles.bodyText,
-                            );
+                            return  Spacer();
+                            //   Text(
+                            //   "NO News",
+                            //   style: CustomPoppinsTextStyles.bodyText,
+                            // );
                           }
                         },
                         error: (error, stackTrace) {
@@ -1004,8 +1006,8 @@ class _LivePageState extends ConsumerState<LivePage> {
           ),
         ),
         Positioned(
-          top: 15.v,
-          right: 50.h,
+          top: 20.v,
+          right: 60.h,
           child: Transform.rotate(
             angle: -Math.pi / 4,
             child: Consumer(
@@ -1014,7 +1016,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                   visible: refBanner.watch(bannerBool),
                   child: Container(
                     width: SizeUtils.width,
-                    height: 30.h,
+                    height: 39.h,
                     color: Colors.red,
                     child: Center(
                       child: AutoScrollText(

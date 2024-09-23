@@ -207,59 +207,6 @@ class _NavigationBarState extends ConsumerState<NavigationBarScreen> {
             },
           ),
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   items: <BottomNavigationBarItem>[
-        //     BottomNavigationBarItem(
-        //       activeIcon: CircleAvatar(
-        //         backgroundColor: appTheme.red700,
-        //         child: CustomImageView(
-        //           color: appTheme.whiteA700,
-        //           width: 30.adaptSize,
-        //           imagePath: ImageConstants.homeIcon,
-        //         ),
-        //       ),
-        //       icon: CustomImageView(
-        //         width: 30.adaptSize,
-        //         imagePath: ImageConstants.homeIcon,
-        //       ),
-        //       label: '',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       activeIcon: CircleAvatar(
-        //         backgroundColor: appTheme.red700,
-        //         child: CustomImageView(
-        //           color: appTheme.whiteA700,
-        //           width: 30.adaptSize,
-        //           imagePath: ImageConstants.bookingIcon,
-        //         ),
-        //       ),
-        //       icon: CustomImageView(
-        //         width: 30.adaptSize,
-        //         imagePath: ImageConstants.bookingIcon,
-        //       ),
-        //       label: '',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       activeIcon: CircleAvatar(
-        //         backgroundColor: appTheme.red700,
-        //         child: CustomImageView(
-        //           color: appTheme.whiteA700,
-        //           width: 30.adaptSize,
-        //           imagePath: ImageConstants.userLogo,
-        //         ),
-        //       ),
-        //       icon: CustomImageView(
-        //         width: 30.adaptSize,
-        //         imagePath: ImageConstants.userLogo,
-        //       ),
-        //       label: '',
-        //     ),
-        //   ],
-        //   currentIndex: _selectedIndex,
-        //   selectedItemColor: Colors.blue,
-        //   onTap: _onItemTapped,
-        // ),
-        // appBar: CustomAppBar(),
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(

@@ -8,12 +8,16 @@ class Liverate extends StatefulWidget {
   State<Liverate> createState() => _LiverateState();
 }
 
-class _LiverateState extends State<Liverate> {
-  double _progress=0;
+class _LiverateState extends State<Liverate> with AutomaticKeepAliveClientMixin {
+  double _progress = 0;
   final uri = Uri.parse("https://aurifyae.github.io/Radiagold-app/");
   late InAppWebViewController inAppWebViewController;
+
+  @override
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -31,9 +35,13 @@ class _LiverateState extends State<Liverate> {
                 });
               },
             ),
+            _progress < 1
+                ? LinearProgressIndicator(value: _progress)
+                : Container(),
           ],
         ),
       ),
     );
   }
 }
+

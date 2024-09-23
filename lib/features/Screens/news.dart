@@ -1,25 +1,35 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class Ratealert extends StatefulWidget {
-  const Ratealert({super.key});
+class News extends StatefulWidget {
+  const News({super.key});
 
   @override
-  State<Ratealert> createState() => _RatealertState();
+  State<News> createState() => _PageOneState();
 }
 
-class _RatealertState extends State<Ratealert>with AutomaticKeepAliveClientMixin {
+class _PageOneState extends State<News> with AutomaticKeepAliveClientMixin{
   double _progress=0;
-  final uri = Uri.parse("https://aurifyae.github.io/Radiagold-app/ratealert");
+  final uri = Uri.parse("http://aurifyae.github.io/Radiagold-app/news.html");
   late InAppWebViewController inAppWebViewController;
-
-  @override
-  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
+
         body: Stack(
           children: [
             InAppWebView(
@@ -35,12 +45,14 @@ class _RatealertState extends State<Ratealert>with AutomaticKeepAliveClientMixin
                 });
               },
             ),
-            _progress < 1
-                ? LinearProgressIndicator(value: _progress)
-                : Container(),
           ],
         ),
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
 }
