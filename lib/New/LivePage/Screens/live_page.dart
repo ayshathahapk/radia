@@ -444,11 +444,11 @@ class _LivePageState extends ConsumerState<LivePage> {
                                                   .bodyTextGreen,
                                               text: "HIGH "),
                                           TextSpan(
-                                              style: CustomPoppinsTextStyles
-                                                  .bodyTextSemiBoldWhite,
-                                              text: liveRateData.gold != null
-                                                  ? " ${liveRateData.gold?.high}"
-                                                  : "0.0"),
+                                            style: CustomPoppinsTextStyles
+                                                .bodyTextSemiBoldWhite,
+                                            text:
+                                                "${liveRateData.gold!.high + (spreadNow.goldHighMargin)}",
+                                          )
                                         ])),
                                   ],
                                 ),
