@@ -381,7 +381,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                     ///sell
                                     ValueDisplayWidget(
                                         value: (liveRateData.gold!.bid +
-                                            (spreadNow.goldAskSpread))),
+                                            (spreadNow.goldBidSpread))),
                                     space(h: 7.v),
                                     RichText(
                                         softWrap:
@@ -769,23 +769,24 @@ class _LivePageState extends ConsumerState<LivePage> {
                                           // ),
                                           Consumer(
                                             builder: (context, refSell, child) {
+                                              final cat =
+                                                  (refSell.watch(goldAskPrice) +
+                                                      commodities.sellPremium);
                                               final askNow =
-                                                  (refSell.watch(goldAskPrice) /
-                                                          31.103) *
-                                                      3.674;
+                                                  (cat / 31.103) * 3.674;
                                               final rateNow = askNow *
-                                                  double.parse(commodities.unit
-                                                      .toString()) *
-                                                  getUnitMultiplier(
-                                                      commodities.weight) *
-                                                  (double.parse(commodities
-                                                          .purity
-                                                          .toString()) /
-                                                      Math.pow(
-                                                          10,
-                                                          commodities.purity
-                                                              .toString()
-                                                              .length));
+                                                      (commodities.unit *
+                                                          getUnitMultiplier(
+                                                              commodities
+                                                                  .weight)) *
+                                                      (commodities.purity /
+                                                          Math.pow(
+                                                              10,
+                                                              (commodities
+                                                                      .purity
+                                                                      .toString())
+                                                                  .length)) +
+                                                  commodities.sellCharge;
                                               return SizedBox(
                                                 width: 120.h,
                                                 child: Center(
@@ -843,23 +844,24 @@ class _LivePageState extends ConsumerState<LivePage> {
                                           ),
                                           Consumer(
                                             builder: (context, refSell, child) {
+                                              final cat =
+                                                  (refSell.watch(goldAskPrice) +
+                                                      commodities.sellPremium);
                                               final askNow =
-                                                  (refSell.watch(goldAskPrice) /
-                                                          31.103) *
-                                                      3.674;
+                                                  (cat / 31.103) * 3.674;
                                               final rateNow = askNow *
-                                                  double.parse(commodities.unit
-                                                      .toString()) *
-                                                  getUnitMultiplier(
-                                                      commodities.weight) *
-                                                  (double.parse(commodities
-                                                          .purity
-                                                          .toString()) /
-                                                      Math.pow(
-                                                          10,
-                                                          commodities.purity
-                                                              .toString()
-                                                              .length));
+                                                      (commodities.unit *
+                                                          getUnitMultiplier(
+                                                              commodities
+                                                                  .weight)) *
+                                                      (commodities.purity /
+                                                          Math.pow(
+                                                              10,
+                                                              (commodities
+                                                                      .purity
+                                                                      .toString())
+                                                                  .length)) +
+                                                  commodities.sellCharge;
                                               return SizedBox(
                                                 width: 120.h,
                                                 child: Center(
@@ -917,23 +919,24 @@ class _LivePageState extends ConsumerState<LivePage> {
                                           ),
                                           Consumer(
                                             builder: (context, refSell, child) {
+                                              final cat =
+                                                  (refSell.watch(goldAskPrice) +
+                                                      commodities.sellPremium);
                                               final askNow =
-                                                  (refSell.watch(goldAskPrice) /
-                                                          31.103) *
-                                                      3.674;
+                                                  (cat / 31.103) * 3.674;
                                               final rateNow = askNow *
-                                                  double.parse(commodities.unit
-                                                      .toString()) *
-                                                  getUnitMultiplier(
-                                                      commodities.weight) *
-                                                  (double.parse(commodities
-                                                          .purity
-                                                          .toString()) /
-                                                      Math.pow(
-                                                          10,
-                                                          commodities.purity
-                                                              .toString()
-                                                              .length));
+                                                      (commodities.unit *
+                                                          getUnitMultiplier(
+                                                              commodities
+                                                                  .weight)) *
+                                                      (commodities.purity /
+                                                          Math.pow(
+                                                              10,
+                                                              (commodities
+                                                                      .purity
+                                                                      .toString())
+                                                                  .length)) +
+                                                  commodities.sellCharge;
                                               return SizedBox(
                                                 width: 120.h,
                                                 child: Center(
@@ -986,7 +989,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                               style: CustomPoppinsTextStyles.bodyText,
                             );
                           } else {
-                            return  Spacer();
+                            return Spacer();
                             //   Text(
                             //   "NO News",
                             //   style: CustomPoppinsTextStyles.bodyText,

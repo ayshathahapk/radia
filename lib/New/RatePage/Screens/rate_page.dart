@@ -102,7 +102,7 @@ class _RatePageState extends ConsumerState<RatePage> {
                                 data: (data) {
                                   final spreadNow = data!.info;
                                   return Text(
-                                    "${liveRateData?.gold?.bid ?? 0 + (spreadNow.goldAskSpread)}",
+                                    "${(liveRateData?.gold?.bid ?? 0 + (spreadNow.goldBidSpread))}",
                                     style:
                                         CustomPoppinsTextStyles.bodyText1White,
                                   );
