@@ -137,8 +137,8 @@ class TextThemes {
 
 /// Class containing the supported color schemes.
 class ColorSchemes {
-  static final lightCodeColorScheme = ColorScheme.light();
-  static final darkCodeColorScheme = ColorScheme.dark();
+  static final lightCodeColorScheme = const ColorScheme.light();
+  static final darkCodeColorScheme = const ColorScheme.dark();
 }
 
 /// Abstract class For Two Mods
@@ -209,49 +209,49 @@ abstract class CodeColors {
 /// Class containing custom colors for a lightCode theme.
 class LightCodeColors implements CodeColors {
   // Black
-  Color get black900 => Color(0XFF000000);
+  Color get black900 => const Color(0XFF000000);
 
 // BlueGray
-  Color get blueGray400 => Color(0XFF888888);
+  Color get blueGray400 => const Color(0XFF888888);
 
-  Color get blueGray900 => Color(0XFF343434);
+  Color get blueGray900 => const Color(0XFF343434);
 
 // Gray
-  Color get gray400 => Color(0XFFC6C6C6);
+  Color get gray400 => const Color(0XFFC6C6C6);
 
   Color get gray300 => Colors.grey.shade300;
 
-  Color get gray50 => Color(0XFFFFF5F6);
+  Color get gray50 => const Color(0XFFFFF5F6);
 
-  Color get gray500 => Color(0XFFA0A0A0);
+  Color get gray500 => const Color(0XFFA0A0A0);
 
-  Color get gray5001 => Color(0XFFFFF5F7);
+  Color get gray5001 => const Color(0XFFFFF5F7);
 
-  Color get gray600 => Color(0XFF7A7A7A);
+  Color get gray600 => const Color(0XFF7A7A7A);
 
-  Color get gray700 => Color(0XFF646464);
+  Color get gray700 => const Color(0XFF646464);
 
-  Color get gray70001 => Color(0XFF585858);
+  Color get gray70001 => const Color(0XFF585858);
 
-  Color get gray800 => Color(0XFF464646);
+  Color get gray800 => const Color(0XFF464646);
 
 // Pink
-  Color get pink100 => Color(0XFFFFACB8);
+  Color get pink100 => const Color(0XFFFFACB8);
 
 // Red
-  Color get red50 => Color(0XFFFFEFF2);
+  Color get red50 => const Color(0XFFFFEFF2);
 
-  Color get red700 => Color(0XFFCC243E);
+  Color get red700 => const Color(0XFFCC243E);
 
-  Color get mainBlue => Color(0xFF163042);
+  Color get mainBlue => const Color(0xFF163042);
 
-  Color get mainGreen => Color(0xFF84af40);
+  Color get mainGreen => const Color(0xFF84af40);
 
-  Color get mainWhite => Color(0xFFf0efef);
+  Color get mainWhite => const Color(0xFFf0efef);
 
-  Color get mainBlack => Color(0xFFf0efef);
+  Color get mainBlack => const Color(0xFF353535);
 
-  Color get mainGray => Color(0xFFA7A7A8);
+  Color get mainGray => const Color(0xFFA7A7A8);
 
   // Color get red700 => Color(0XFFCC243E);
   Color get red100 => Colors.red.shade100;
@@ -261,74 +261,74 @@ class LightCodeColors implements CodeColors {
 
   Color get green => Colors.green;
 
-  Color get red70001 => Color(0XFFD33339);
+  Color get red70001 => const Color(0XFFD33339);
 
 // White
-  Color get whiteA700 => Color(0XFFFFFFFF);
+  Color get whiteA700 => const Color(0XFFFFFFFF);
 
 // Yellow
-  Color get yellow900 => Color(0XFFF37421);
+  Color get yellow900 => const Color(0XFFF37421);
 }
 
 /// Class containing custom colors for a darkCode theme.
 class DarkCodeColors implements CodeColors {
   // Black
-  Color get black900 => Color(0XFF000000);
+  Color get black900 => const Color(0XFF000000);
 
   // BlueGray
-  Color get blueGray400 => Color(0XFF888888);
+  Color get blueGray400 => const Color(0XFF888888);
 
-  Color get blueGray900 => Color(0XFF343434);
+  Color get blueGray900 => const Color(0XFF343434);
 
   // Gray
-  Color get gray400 => Color(0XFFC6C6C6);
+  Color get gray400 => const Color(0XFFC6C6C6);
 
   Color get gray300 => Colors.grey.shade300;
 
-  Color get gray50 => Color(0XFFFFF5F6);
+  Color get gray50 => const Color(0XFFFFF5F6);
 
-  Color get gray500 => Color(0XFFA0A0A0);
+  Color get gray500 => const Color(0XFFA0A0A0);
 
-  Color get gray5001 => Color(0XFFFFF5F7);
+  Color get gray5001 => const Color(0XFFFFF5F7);
 
-  Color get gray600 => Color(0XFF7A7A7A);
+  Color get gray600 => const Color(0XFF7A7A7A);
 
-  Color get gray700 => Color(0XFF646464);
+  Color get gray700 => const Color(0XFF646464);
 
-  Color get gray70001 => Color(0XFF585858);
+  Color get gray70001 => const Color(0XFF585858);
 
-  Color get gray800 => Color(0XFFA0A0A0);
+  Color get gray800 => const Color(0XFFA0A0A0);
 
   // Pink
-  Color get pink100 => Color(0XFFFFACB8);
+  Color get pink100 => const Color(0XFFFFACB8);
 
   // Red
-  Color get red50 => Color(0XFFFFEFF2);
+  Color get red50 => const Color(0XFFFFEFF2);
 
-  Color get red700 => Color(0XFFCC243E);
+  Color get red700 => const Color(0XFFCC243E);
 
-  Color get mainBlue => Color(0xFFf0efef);
+  Color get mainBlue => const Color(0xFFf0efef);
 
-  Color get mainGreen => Color(0xFF84af40);
+  Color get mainGreen => const Color(0xFF84af40);
 
-  Color get mainWhite => Color(0xFF163042);
+  Color get mainWhite => const Color(0xFF163042);
 
-  Color get mainBlack => Color(0xFF353535);
+  Color get mainBlack => const Color(0xFF353535);
 
-  Color get mainGray => Color(0xFFA7A7A8);
+  Color get mainGray => const Color(0xFFA7A7A8);
 
   Color get red100 => Colors.red.shade100;
 
   Color get orange => Colors.orange;
-  Color get gold => Color(0xFFdbbd75);
+  Color get gold => const Color(0xFFdbbd75);
 
   Color get green => Colors.green;
 
-  Color get red70001 => Color(0XFFD33339);
+  Color get red70001 => const Color(0XFFD33339);
 
   // White
-  Color get whiteA700 => Color(0xFF163042);
+  Color get whiteA700 => const Color(0xFF163042);
 
   // Yellow
-  Color get yellow900 => Color(0XFFF37421);
+  Color get yellow900 => const Color(0XFFF37421);
 }

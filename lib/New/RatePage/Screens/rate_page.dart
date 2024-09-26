@@ -87,11 +87,11 @@ class _RatePageState extends ConsumerState<RatePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: SizeUtils.height * 0.055,
-                    backgroundColor: appTheme.gray800,
+                    radius: SizeUtils.height * 0.065,
+                    backgroundColor: CupertinoColors.systemYellow,
                     child: CircleAvatar(
-                      backgroundColor: appTheme.gold,
-                      radius: SizeUtils.height * 0.05,
+                      backgroundColor: appTheme.mainBlack,
+                      radius: SizeUtils.height * 0.06,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

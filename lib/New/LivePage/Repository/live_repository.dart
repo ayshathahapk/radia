@@ -395,7 +395,7 @@ class LiveRateNotifier extends StateNotifier<LiveRateModel?> {
 
   void _requestMarketData(List<String> symbols) {
     if (_isConnected) {
-      _socket?.emit('request-data', symbols);
+      _socket?.emit('request-data', [symbols]);
     }
   }
 

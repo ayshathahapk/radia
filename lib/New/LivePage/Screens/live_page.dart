@@ -208,9 +208,7 @@ class _LivePageState extends ConsumerState<LivePage> {
         Padding(
           padding: EdgeInsets.only(left: 8.0.v, right: 8.0.v),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -251,6 +249,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                   )
                 ],
               ),
+              space(),
               CustomImageView(
                 imagePath: ImageConstants.logoText,
               ),
@@ -663,7 +662,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                 },
               ),
 
-              space(),
+              space(h: 25.v),
               Container(
                 width: SizeUtils.width,
                 height: SizeUtils.height * 0.05,
@@ -696,6 +695,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                   ],
                 ),
               ),
+              space(h: 5.v),
               Consumer(
                 builder: (context, ref2, child) {
                   print("Consumer is rebulding");
@@ -976,6 +976,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                   );
                 },
               ),
+              space(h: 15.v),
               Consumer(
                 builder: (context, ref1, child) {
                   return ref1.watch(newsProvider).when(
@@ -989,11 +990,11 @@ class _LivePageState extends ConsumerState<LivePage> {
                               style: CustomPoppinsTextStyles.bodyText,
                             );
                           } else {
-                            return Spacer();
-                            //   Text(
-                            //   "NO News",
-                            //   style: CustomPoppinsTextStyles.bodyText,
-                            // );
+                            return AutoScrollText(
+                              delayBefore: const Duration(seconds: 3),
+                              "                       RADIA MOHAMMED JEWELLERY                       ",
+                              style: CustomPoppinsTextStyles.bodyText,
+                            );
                           }
                         },
                         error: (error, stackTrace) {
