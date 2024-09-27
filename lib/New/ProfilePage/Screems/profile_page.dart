@@ -156,7 +156,7 @@ Widget showBottomSheetScreen({required BuildContext context}) {
           onTap: () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return Details();
+                return const Details();
               },
             ));
           },

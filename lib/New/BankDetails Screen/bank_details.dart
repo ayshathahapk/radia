@@ -76,13 +76,13 @@ class _DetailsState extends ConsumerState<Details> {
                 width: SizeUtils.width * 0.30,
               ),
               Image.asset(ImageConstants.logoText),
-              Text(
-                DateFormat('MMM/dd/yyyy-h:mm:ss a').format(DateTime.now()),
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
+              // Text(
+              //   DateFormat('MMM/dd/yyyy-h:mm:ss a').format(DateTime.now()),
+              //   style: const TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 18,
+              //       fontWeight: FontWeight.bold),
+              // ),
               SizedBox(
                 height: SizeUtils.height * 0.02,
               ),
@@ -100,7 +100,6 @@ class _DetailsState extends ConsumerState<Details> {
                   return refBank.watch(bankDetailsProvider).when(
                         data: (data) {
                           if (data != null) {
-                            print("data Null alla");
                             print(data.bankInfo.bankDetails);
                             if (data.bankInfo.bankDetails.isNotEmpty) {
                               return Expanded(
