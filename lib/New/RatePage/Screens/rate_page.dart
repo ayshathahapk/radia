@@ -100,9 +100,9 @@ class _RatePageState extends ConsumerState<RatePage> {
                               final liveRateData = ref1.watch(liveRateProvider);
                               return ref1.watch(spotRateProvider).when(
                                 data: (data) {
-                                  final spreadNow = data!.info;
+                                  final spreadNow = data?.info;
                                   return Text(
-                                    "${(liveRateData?.gold?.bid ?? 0 + (spreadNow.goldBidSpread))}",
+                                    "${(liveRateData?.gold?.bid ?? 0 + (spreadNow?.goldBidSpread ?? 0))}",
                                     style:
                                         CustomPoppinsTextStyles.bodyText1White,
                                   );
