@@ -60,7 +60,7 @@ class _DetailsState extends ConsumerState<Details> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          padding: EdgeInsets.all(8.v),
+          padding: EdgeInsets.only(left: 18.v, right: 18.v, top: 10.v),
           height: SizeUtils.height,
           width: SizeUtils.width,
           decoration: const BoxDecoration(
