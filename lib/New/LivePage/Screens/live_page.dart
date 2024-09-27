@@ -1009,30 +1009,30 @@ class _LivePageState extends ConsumerState<LivePage> {
             ],
           ),
         ),
-        // if (ref.watch(bannerBool))
-        Positioned(
-          top: 15.v,
-          right: 50.h,
-          child: Transform.rotate(
-            angle: -Math.pi / 4,
-            child: Consumer(
-              builder: (context, refBanner, child) {
-                return Container(
-                  width: SizeUtils.width,
-                  height: 30.h,
-                  color: Colors.red,
-                  child: Center(
-                    child: AutoScrollText(
-                      delayBefore: const Duration(seconds: 1),
-                      "           Market is closed. It will open soon!            ",
-                      style: CustomPoppinsTextStyles.buttonText,
+        if (ref.watch(bannerBool))
+          Positioned(
+            top: 15.v,
+            right: 50.h,
+            child: Transform.rotate(
+              angle: -Math.pi / 4,
+              child: Consumer(
+                builder: (context, refBanner, child) {
+                  return Container(
+                    width: SizeUtils.width,
+                    height: 30.h,
+                    color: Colors.red,
+                    child: Center(
+                      child: AutoScrollText(
+                        delayBefore: const Duration(seconds: 1),
+                        "           Market is closed. It will open soon!            ",
+                        style: CustomPoppinsTextStyles.buttonText,
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
-        ),
       ],
     );
   }
