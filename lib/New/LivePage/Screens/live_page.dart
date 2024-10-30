@@ -339,7 +339,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                               ref1.read(goldAskPrice.notifier).update(
                                 (state) {
                                   final res = (liveRateData.gold!.bid +
-                                      (spreadNow.goldAskSpread));
+                                      (spreadNow.goldBidSpread));
                                   return res;
                                 },
                               );
@@ -688,7 +688,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                     //   color: appTheme.gray700,
                     // ),
                     Text(
-                      "PRICE(AED)",
+                      "ASK(AED)",
                       style: CustomPoppinsTextStyles.bodyText1,
                     ),
                     Spacer(),
@@ -769,9 +769,9 @@ class _LivePageState extends ConsumerState<LivePage> {
                                           // ),
                                           Consumer(
                                             builder: (context, refSell, child) {
-                                              final cat =
-                                                  (refSell.watch(goldAskPrice) +
-                                                      commodities.sellPremium);
+                                              final cat = (refSell
+                                                      .watch(silverAskPrice) +
+                                                  commodities.sellPremium);
                                               final askNow =
                                                   (cat / 31.103) * 3.674;
                                               final rateNow = askNow *
@@ -844,9 +844,9 @@ class _LivePageState extends ConsumerState<LivePage> {
                                           ),
                                           Consumer(
                                             builder: (context, refSell, child) {
-                                              final cat =
-                                                  (refSell.watch(goldAskPrice) +
-                                                      commodities.sellPremium);
+                                              final cat = (refSell
+                                                      .watch(silverAskPrice) +
+                                                  commodities.sellPremium);
                                               final askNow =
                                                   (cat / 31.103) * 3.674;
                                               final rateNow = askNow *
@@ -919,9 +919,9 @@ class _LivePageState extends ConsumerState<LivePage> {
                                           ),
                                           Consumer(
                                             builder: (context, refSell, child) {
-                                              final cat =
-                                                  (refSell.watch(goldAskPrice) +
-                                                      commodities.sellPremium);
+                                              final cat = (refSell
+                                                      .watch(silverAskPrice) +
+                                                  commodities.sellPremium);
                                               final askNow =
                                                   (cat / 31.103) * 3.674;
                                               final rateNow = askNow *
@@ -986,13 +986,13 @@ class _LivePageState extends ConsumerState<LivePage> {
                             print(data123.toMap());
                             return AutoScrollText(
                               delayBefore: const Duration(seconds: 3),
-                              "${data123.news.news[0].description}                             ",
+                              "${data123.news.news[0].description} ${data123.news.news[0].description} ${data123.news.news[0].description}",
                               style: CustomPoppinsTextStyles.bodyText,
                             );
                           } else {
                             return AutoScrollText(
                               delayBefore: const Duration(seconds: 3),
-                              "                       RADIA MOHAMMED JEWELLERY                       ",
+                              "RADIA MOHAMMED JEWELLERY   RADIA MOHAMMED JEWELLERY    RADIA MOHAMMED JEWELLERY",
                               style: CustomPoppinsTextStyles.bodyText,
                             );
                           }
